@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   post '/auth/logout', to: 'authentication#logout'
 
   resources :users, only: [:show, :update, :index, :create], param: :_username 
-
+  namespace :api do
+    namespace :v1 do
+      resources :maps do
+      end
+    end
+  end
 
 
   get '/*a', to: 'application#not_found'
