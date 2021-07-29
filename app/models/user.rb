@@ -5,8 +5,4 @@ class User < ApplicationRecord
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :username, presence: true, uniqueness: true
     validates_presence_of :password
-
-    has_many :locations
-    has_many :ratings
-    has_many :comments
 end

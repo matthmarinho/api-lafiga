@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   post '/auth/logout', to: 'authentication#logout'
 
   resources :users, only: [:show, :update, :index, :create], param: :_username 
-  resources :profile
+  # resources :profile
 
-  namespace :api do
-    namespace :v1 do
-      resources :locations do
-        resources :ratings
-        resources :comments
-      end
-    end
-  end
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :locations do
+  #       resources :ratings
+  #       resources :comments
+  #     end
+  #   end
+  # end
 
 
 
