@@ -1,0 +1,23 @@
+default: &default
+
+  adapter: postgresql
+  encoding: unicode
+  # host: db
+  username: postgres
+  password: password
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: lafiga_db
+
+test:
+  <<: *default
+  database: lafiga_db_test
+
+
+production:
+  <<: *default
+  database: lafiga_db_production
+  username: lafiga_db
+  password: <%= ENV['NEARBY_PLACES_DATABASE_PASSWORD'] %>
