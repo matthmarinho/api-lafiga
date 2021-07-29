@@ -1,6 +1,6 @@
-class Rating < ApplicationRecord
-    validates :rate, presence: true
+# class Rating < ApplicationRecord
+#     validates :rate, presence: true
 
-    belongs_to :location
-    belongs_to :user
-end
+#     belongs_to :location
+#     belongs_to :user
+# end
