@@ -1,25 +1,25 @@
 
-class ProfileController < ApplicationController
-    before_action :authorize_request
+# class ProfileController < ApplicationController
+#     before_action :authorize_request
         
-    def index
-        @response = User.find(@current_user.id)
-        respond
-    end
+#     def index
+#         @response = User.find(@current_user.id)
+#         respond
+#     end
 
-    private
+#     private
 
-    def respond
-        if @response
-            render json: @response, status: 200, serializer: ProfileSerializer
-        else
-            render json: { errors: @response.errors }, status: 403
-        end
-    end
+#     def respond
+#         if @response
+#             render json: @response, status: 200, serializer: ProfileSerializer
+#         else
+#             render json: { errors: @response.errors }, status: 403
+#         end
+#     end
 
-    def user_params
-        params.permit(
-        :name, :email, :password, :password_confirmation
-        )
-    end
-end
+#     def user_params
+#         params.permit(
+#         :name, :email, :password, :password_confirmation
+#         )
+#     end
+# end
