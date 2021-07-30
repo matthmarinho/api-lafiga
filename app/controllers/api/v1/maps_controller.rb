@@ -38,8 +38,6 @@ class Api::V1::MapsController < ApplicationController
 
     def find_map
         @map = Map.find_by_id(params[:id])
-        rescue ActiveRecord::RecordNotFound
-            render json: { errors: 'Map not found' }, status: 403
     end
     
 end
