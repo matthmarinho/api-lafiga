@@ -1,5 +1,5 @@
 class Api::V1::MapsController < ApplicationController
-    before_action :authorize_request
+    # before_action :authorize_request
     before_action :find_map, only: [:create, :index]
 
     def index
