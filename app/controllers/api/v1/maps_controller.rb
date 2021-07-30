@@ -33,7 +33,7 @@ class Api::V1::MapsController < ApplicationController
     private
 
     def map_params
-        params.permit(:name)
+        params.permit(:id, :name)
     end
 
     def find_map
