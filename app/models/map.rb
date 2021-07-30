@@ -1,6 +1,6 @@
 class Map < ApplicationRecord
-    # validates :comment, presence: true
+    validates :name, presence: true
     
-    # belongs_to :location
+    has_many :markers
     # belongs_to :user
 end

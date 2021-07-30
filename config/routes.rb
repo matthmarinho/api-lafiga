@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update, :index, :create], param: :_username 
   namespace :api do
     namespace :v1 do
+      resources :categories, only: [:show, :update, :index, :create]
       resources :maps do
+        resources :markers do
+        end
       end
     end
   end
