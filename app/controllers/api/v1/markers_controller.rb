@@ -12,13 +12,24 @@ class Api::V1::MarkersController < ApplicationController
     end
 
     def create
-        @marker = Marker.new(marker_params)
-        if @marker.save
-            render json: @marker, status: :created 
-        else
-            render json: { errors: @marker.errors.full_messages },
-                           status: :unprocessable_entity
+        @new_markers = JSON.parse(marker_params[:data])
+        @new_markers.each do |new_marker|
+            pp new_marker
+            marker = Marker.where(name: new_marker['name'], category_id: new_marker['category_id'], map_id: new_marker['map_id'])
+                           .first_or_initialize
+            marker.description = new_marker['description']
+            marker.latitude = new_marker['latitude']
+            marker.longitude = new_marker['longitude']
+            marker.color = new_marker['color'] ? new_marker['color'] : nil
+            marker.save
         end
+        # @marker = Marker.new(marker_params)
+        # if @marker.save
+        #     render json: @marker, status: :created 
+        # else
+        #     render json: { errors: @marker.errors.full_messages },
+        #                    status: :unprocessable_entity
+        # end
     end
 
     def show
@@ -33,7 +44,8 @@ class Api::V1::MarkersController < ApplicationController
     private
 
     def marker_params
-        params.permit(:id, :map_id, :category_id, :name, :discription, :latitude, :longitude )
+        params.permit(:data, :map_id).to_h
+        # params.permit(:id, :map_id, :category_id, :name, :description, :latitude, :longitude )
     end
 
     def find_marker
