@@ -1,6 +1,6 @@
 class Api::V1::MarkersController < ApplicationController
     # before_action :authorize_request
-    before_action :find_marker, only: [:create, :index]
+    before_action :find_marker, only: [:create, :index, :update, :destroy]
 
     def index
         @markers = Marker.where(map_id: params[:map_id])
@@ -23,13 +23,13 @@ class Api::V1::MarkersController < ApplicationController
             marker.color = new_marker['color'] ? new_marker['color'] : nil
             marker.save
         end
-        # @marker = Marker.new(marker_params)
-        # if @marker.save
-        #     render json: @marker, status: :created 
-        # else
-        #     render json: { errors: @marker.errors.full_messages },
-        #                    status: :unprocessable_entity
-        # end
+    end
+
+    def update
+        unless @marker.update(update_marker_params)
+            render json: { errors: @user.errors.full_messages },
+                    status: :unprocessable_entity
+        end
     end
 
     def show
@@ -38,14 +38,17 @@ class Api::V1::MarkersController < ApplicationController
     end
 
     def destroy
-        
+        @marker.destroy
     end
 
     private
 
     def marker_params
         params.permit(:data, :map_id).to_h
-        # params.permit(:id, :map_id, :category_id, :name, :description, :latitude, :longitude )
+    end
+
+    def update_marker_params
+        params.permit(:id, :map_id, :category_id, :name, :description, :latitude, :longitude, :color )
     end
 
     def find_marker
