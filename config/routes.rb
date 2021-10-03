@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   post '/authenticate', to: 'authentication#login'
   post '/auth/logout', to: 'authentication#logout'
 
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
         resources :markers do
         end
       end
+      resources :groups
     end
   end
 
