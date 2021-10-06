@@ -42,7 +42,7 @@ class Api::V1::MarkersController < ApplicationController
     end
 
     def feed
-        @markers = Marker.includes(:map, :category).to_json(include: [:map, :category])
+        @markers = Marker.includes(:map, :category).order(updated_at: :desc).to_json(include: [:map, :category])
         render json: @markers, status: :ok, each_serializer: MarkersSerializer
     end
 
