@@ -41,6 +41,11 @@ class Api::V1::MarkersController < ApplicationController
         @marker.destroy
     end
 
+    def feed
+        @markers = Marker.includes(:map, :category).to_json(include: [:map, :category])
+        render json: @markers, status: :ok, each_serializer: MarkersSerializer
+    end
+
     private
 
     def marker_params

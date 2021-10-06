@@ -12,6 +12,9 @@ Rails.application.routes.draw do
         end
       end
       resources :groups
+      resources :markers do 
+        get 'feed', :on => :collection
+      end
     end
   end
 

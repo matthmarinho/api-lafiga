@@ -1,7 +1,34 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/tmp
-/log
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
 *.dump
+/db/schema.rb
+
+# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
+config/initializers/secret_token.rb
+config/master.key
+
+# dotenv, dotenv-rails
+# TODO Comment out these rules if environment variables can be committed
+.env
+.env.*
+
+## Environment normalization:
+/.bundle
+/vendor/bundle
+
+# Ignore node_modules
+node_modules/
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
+/public/assets
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
