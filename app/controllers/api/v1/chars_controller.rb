@@ -39,6 +39,6 @@ class Api::V1::CharsController < ApplicationController
     end
 
     def char_params
-      params.fetch(:char, {})
+      params.permit(:id, :name, :race, :sub_race, :klass, :sub_class, :level)
     end
 end
