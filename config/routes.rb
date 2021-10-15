@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :chars
   post '/authenticate', to: 'authentication#login'
   post '/auth/logout', to: 'authentication#logout'
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
       resources :markers do 
         get 'feed', :on => :collection
       end
+      resources :chars
     end
   end
 
