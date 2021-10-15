@@ -1,4 +1,4 @@
-class Api::V1:CharsController < ApplicationController
+class Api::V1::CharsController < ApplicationController
   before_action :set_char, only: [:show, :update, :destroy]
 
   def index
