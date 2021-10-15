@@ -4,7 +4,7 @@ class Api::V1::CharsController < ApplicationController
   def index
     @chars = Char.all
 
-    render json: @chars
+    render json: @chars, status: :ok, each_serializer: CharsSerializer
   end
 
   def show
@@ -23,7 +23,7 @@ class Api::V1::CharsController < ApplicationController
 
   def update
     if @char.update(char_params)
-      render json: @char
+      render json: @char, status: :ok, each_serializer: CharsSerializer
     else
       render json: @char.errors.full_messages, status: :unprocessable_entity
     end
