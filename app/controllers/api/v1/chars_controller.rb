@@ -34,7 +34,7 @@ class Api::V1::CharsController < ApplicationController
   end
 
   def remove_in_batches
-    @char = JSON.parse(marker_params[:data])
+    @char = JSON.parse(char_destroy_params[:data])
     @char.each do |char|
       Char.find_by_id(char['id']).destroy
     end
@@ -48,4 +48,8 @@ class Api::V1::CharsController < ApplicationController
     def char_params
       params.permit(:id, :name, :race, :sub_race, :klass, :sub_class, :level)
     end
+
+    def char_destroy_params
+      params.permit(:data).to_h
+  end
 end
