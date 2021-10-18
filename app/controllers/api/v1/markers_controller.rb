@@ -14,7 +14,6 @@ class Api::V1::MarkersController < ApplicationController
     def create
         @new_markers = JSON.parse(marker_params[:data])
         @new_markers.each do |new_marker|
-            pp new_marker
             marker = Marker.where(name: new_marker['name'], category_id: new_marker['category_id'], map_id: new_marker['map_id'])
                            .first_or_initialize
             marker.description = new_marker['description']

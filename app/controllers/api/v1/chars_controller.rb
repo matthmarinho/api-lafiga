@@ -33,6 +33,13 @@ class Api::V1::CharsController < ApplicationController
     @char.destroy
   end
 
+  def remove_in_batches
+    @char = JSON.parse(marker_params[:data])
+    @char.each do |char|
+      Char.find_by_id(char['id']).destroy
+    end
+  end
+
   private
     def set_char
       @char = Char.find(params[:id])

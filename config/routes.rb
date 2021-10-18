@@ -16,7 +16,9 @@ Rails.application.routes.draw do
       resources :markers do 
         get 'feed', :on => :collection
       end
-      resources :chars
+      resources :chars do
+        get 'remove_in_batches', :on => :collection
+      end
     end
   end
 
