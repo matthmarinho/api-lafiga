@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :teams
   resources :chars
   post '/authenticate', to: 'authentication#login'
   post '/auth/logout', to: 'authentication#logout'
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       resources :chars do
         delete 'remove_in_batches', :on => :collection
       end
+      resources :teams
     end
   end
 
