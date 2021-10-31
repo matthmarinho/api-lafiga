@@ -5,6 +5,7 @@ class Api::V1::MapsController < ApplicationController
     def index
         @maps = Map.all
         render json: @maps, status: :ok, each_serializer: MapsSerializer
+        
     end
     
     def new
