@@ -51,5 +51,5 @@ class Api::V1::CharsController < ApplicationController
 
     def char_destroy_params
       params.permit(:data).to_h
-  end
+    end
 end

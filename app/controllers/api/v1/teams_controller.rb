@@ -44,7 +44,10 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   def destroy
-    @team.destroy
+    @teams = JSON.parse(team_destroy_params[:data])
+    @teams.each do |team|
+      Team.find_by_id(team['id']).destroy
+    end
   end
 
   private
@@ -58,5 +61,9 @@ class Api::V1::TeamsController < ApplicationController
 
     def char_params
       params.permit(chars: [:id, :name, :race, :sub_race, :klass, :sub_class, :level])
+    end
+
+    def team_destroy_params
+      params.permit(:data).to_h
     end
 end

@@ -21,6 +21,7 @@ class Api::V1::MarkersController < ApplicationController
             marker.longitude = new_marker['longitude']
             marker.color = new_marker['color'] ? new_marker['color'] : nil
             marker.save
+            Rails.logger.info(marker.errors.inspect) 
         end
     end
 
@@ -52,7 +53,7 @@ class Api::V1::MarkersController < ApplicationController
     end
 
     def update_marker_params
-        params.permit(:id, :map_id, :category_id, :name, :description, :latitude, :longitude, :color )
+        params.permit(:id, :map_id, :category_id, :name, :description, :latitude, :longitude, :color, :team_id )
     end
 
     def find_marker

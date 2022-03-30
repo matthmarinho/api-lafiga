@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :categories, only: [:show, :update, :index, :create]
       resources :maps do
+        get 'getNames', :on => :collection
+        delete 'remove_in_batches', :on => :collection
         resources :markers do
         end
       end

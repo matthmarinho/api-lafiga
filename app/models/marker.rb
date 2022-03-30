@@ -3,4 +3,5 @@ class Marker < ActiveRecord::Base
     
     belongs_to :category
     belongs_to :map
+    belongs_to :team, optional: true
 end

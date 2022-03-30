@@ -51,4 +51,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.allowed_request_origins = ['http://localhost:3000']
+
+  config.active_storage.service = :local
 end
