@@ -20,7 +20,7 @@ gem 'puma', '~> 4.1'
 gem 'jwt'
 gem 'simple_command'
 gem 'rack-cors'
-
+gem 'carrierwave'   
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.16'
