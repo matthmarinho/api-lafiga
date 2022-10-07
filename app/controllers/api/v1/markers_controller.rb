@@ -13,21 +13,27 @@ class Api::V1::MarkersController < ApplicationController
 
     def create
         @new_markers = JSON.parse(marker_params[:data])
+
         @new_markers.each do |new_marker|
-            marker = Marker.where(name: new_marker['name'], category_id: new_marker['category_id'], map_id: new_marker['map_id'])
-                           .first_or_initialize
-            marker.description = new_marker['description']
+            markerable = new_marker['markerable_type'].constantize
+                .find(new_marker['markerable_id'])
+                .update(new_marker['markerable'])
+            
+            marker = Marker.find_or_create_by(
+                map_id: new_marker['map_id'], 
+                markerable_type: new_marker['markerable_type'], 
+                markerable_id: new_marker['markerable_id']
+            )
             marker.latitude = new_marker['latitude']
             marker.longitude = new_marker['longitude']
-            marker.color = new_marker['color'] ? new_marker['color'] : nil
             marker.save
             Rails.logger.info(marker.errors.inspect) 
         end
     end
 
     def update
-        unless @marker.update(update_marker_params)
-            render json: { errors: @user.errors.full_messages },
+        unless @marker.update(marker_params) && @marker.markerable.update(marker_params['markerable'])
+            render json: { errors: @marker.errors.full_messages },
                     status: :unprocessable_entity
         end
     end
@@ -49,11 +55,10 @@ class Api::V1::MarkersController < ApplicationController
     private
 
     def marker_params
-        params.permit(:data, :map_id).to_h
-    end
-
-    def update_marker_params
-        params.permit(:id, :map_id, :category_id, :name, :description, :latitude, :longitude, :color, :team_id )
+        params.permit(
+            :data, :id, :map_id, :latitude, :longitude, :markerable_type, :markerable_id, 
+            markerable: [:name, :description, :season, :day, :color]
+        ).to_h
     end
 
     def find_marker

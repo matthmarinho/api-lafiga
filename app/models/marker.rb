@@ -1,7 +1,6 @@
 class Marker < ActiveRecord::Base
-    validates :latitude, :longitude, :name, :category, presence: true
-    
-    belongs_to :category
+    validates :latitude, :longitude, presence: true
+
     belongs_to :map
-    belongs_to :team, optional: true
+    belongs_to :markerable, polymorphic: true
 end

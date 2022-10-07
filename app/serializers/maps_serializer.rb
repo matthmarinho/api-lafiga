@@ -1,5 +1,5 @@
 class MapsSerializer < ApplicationSerializer
-    attributes :id, :name, :image, :image_name, :width, :height
+    attributes :id, :name, :image, :image_name
 
     def image
         if object.image

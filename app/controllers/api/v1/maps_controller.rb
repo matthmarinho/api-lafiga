@@ -48,7 +48,7 @@ class Api::V1::MapsController < ApplicationController
         @params['name'] = map_params['name']
         @params['id'] = map_params['id']
         
-        File.delete(@map.image_name)
+        File.delete(@map.image_name) if @map.image_name 
 
         if @map.update(@params)
           render json: @map, status: :ok
@@ -69,6 +69,10 @@ class Api::V1::MapsController < ApplicationController
             Map.find_by_id(map['id']).destroy
         end
     end
+
+    def destroy
+        @map.destroy
+      end
 
     def getNames
         @maps = Map.all.order(:id)

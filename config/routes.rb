@@ -22,7 +22,9 @@ Rails.application.routes.draw do
       resources :chars do
         delete 'remove_in_batches', :on => :collection
       end
-      resources :teams
+      resources :teams do
+        delete 'remove_in_batches', :on => :collection
+      end
     end
   end
 
