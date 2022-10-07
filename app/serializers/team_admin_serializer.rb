@@ -1,5 +1,5 @@
 class TeamAdminSerializer < ApplicationSerializer
-  attributes :id, :name, :day, :season
+  attributes :id, :name
 
   has_many :chars, serializer: CharSerializer
 end
