@@ -40,6 +40,11 @@ class Api::V1::CharsController < ApplicationController
     end
   end
 
+  def without_team
+    @chars = Char.includes(:team).where(chars_teams: { id: nil })
+    render json: @chars, status: :ok, each_serializer: CharSerializer
+  end
+
   private
     def set_char
       @char = Char.find(params[:id])

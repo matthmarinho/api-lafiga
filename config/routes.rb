@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       end
       resources :chars do
         delete 'remove_in_batches', :on => :collection
+        get 'without_team', :on => :collection
       end
       resources :teams do
         delete 'remove_in_batches', :on => :collection
