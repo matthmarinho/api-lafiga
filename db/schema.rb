@@ -69,14 +69,16 @@ ActiveRecord::Schema.define(version: 2022_10_07_020428) do
 
   create_table "markers", force: :cascade do |t|
     t.bigint "map_id", null: false
-    t.string "markerable_type", null: false
-    t.bigint "markerable_id", null: false
+    t.bigint "category_id", null: false
+    t.string "name"
+    t.text "description"
     t.float "latitude"
     t.float "longitude"
+    t.json "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_markers_on_category_id"
     t.index ["map_id"], name: "index_markers_on_map_id"
-    t.index ["markerable_type", "markerable_id"], name: "index_markers_on_markerable_type_and_markerable_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -114,5 +116,6 @@ ActiveRecord::Schema.define(version: 2022_10_07_020428) do
 
   add_foreign_key "chars", "teams"
   add_foreign_key "group_players", "groups"
+  add_foreign_key "markers", "categories"
   add_foreign_key "markers", "maps"
 end
