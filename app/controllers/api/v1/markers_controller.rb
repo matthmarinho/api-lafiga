@@ -5,6 +5,7 @@ class Api::V1::MarkersController < ApplicationController
     def index
         @markers = Marker.where(map_id: params[:map_id])
         render json: @markers, status: :ok, each_serializer: MarkersSerializer
+    
     end
     
     def new
