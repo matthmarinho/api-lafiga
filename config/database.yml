@@ -10,8 +10,8 @@ default: &default
 development:
   <<: *default
   database: lafiga_db
-  username: matthaeus
-  password: password
+  username: lafiga
+  password: lafiga2022$&@
 
 test:
   <<: *default

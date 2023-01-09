@@ -53,4 +53,6 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = ['http://localhost:3000']
 
   config.active_storage.service = :local
+
+  config.hosts << "api.lafiga.com.br"
 end
