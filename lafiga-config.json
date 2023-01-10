@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lafiga",
+  "private_key_id": "10c21d838ce1cacb73f409d21fe25189969e1bff",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCkIvULRMlVbuBm\np/vONY9iy+h0J3mLAlJo6nIei+eZmZiY7JynDD1PUMdy+7yIeho/SU68rm05Liyj\nsM2FDTJQ6xiiZsw68kYOniGHgJQ0sSBJoLSxTQBo1G3LgtUs0WwOTN7OYICLoAWF\nc2lYS6GTaQBVcSqV/p7sE0T4L7xPAeD4Y+11HH/P1ecLGN2gDBpi4aw8QLVLVQak\nX3T/FyPzHrwGb2lQqAGxO2ZNa8HzQ9730VudN1rlwma4M42wnrRG6pIu+n1IXPa/\ne+2gKVamZhNzRIhus/4YEY+1FQzHkiSQjn2iosZOb8RuGNTeYpGLVu4igt9hOgfq\nf4RQNtKbAgMBAAECggEADNLJrUCJsESHgKMFemtXJqNX/QyBI5n3Vp4LyL9/xSbU\nXreMV5q5BtjV9Eb0SFStzJ2iv/1VUt8neqnGAhacBJQRf81N4xm+3RvVR8ZaYzF8\nHHR97s+IGtM55BP2fq1lO/Vyf3zXniZO4sm3rxUdlwGK6/dO70VjeiiD6MCl/Xq/\nuyCynwM4Bns7PuMSM7xlBgn3aYnGA8FRtGTMbYSxk3/3PlHfrzcRWia8JyglNw6d\nnlW2Jaiyu2a9sedeWY7SwZKYhGcsP+UzzINInIC81FijpbKAml4QtuAZC4edBSFo\nxT/tywmEC0UR9P+9EBz87g9bUGbTp7DZ4AGtxf0r3QKBgQDjNv2YO/Zg8Bpiu1DP\n9c1Dbk9c6JPbXKoeTt3CpcL4hEURTGihvXjANWTZiRtxn0AY2IePj9k21oKAzulG\nynGJps8Bcv3zfQTr1/0eXHiR4h6reSJTI4AYuVNHNMatBdgL4S9lJAzKckfbQ1b2\nlv/VlEZoxOu6Ov1KmxoEKTde9wKBgQC47jfwSn99pOnJjbBIdMJQZ5wlM/eJszx2\nkZifG9VCv2D984szN4zKgo76iQz9Mh2wdW+Fkb8EpbRSpGXFjph7C2/EN05pSr3/\nCRtXCY7rdhVCFAI1+8wA7BK1ncORV8rRR4gTVoeyaAuvCDlAwg/+PExGes6y5NSs\nRI+RjT0sfQKBgQDeHIaAh7VMg8o3U8cm07EJRs88EntfR9Fg+VWdDq9ugtaFl3z9\nBxwAQPHKGVaDltpwr1KtS0BadA103095DTM6DZ90WjXYDRF/f0+Hm3udmD7E/xBH\n139EK/41sGi7AOh2jHXpV/lM+bQ2qjhbq7aB0YWWq1GIZlvuz3n6MVRYdwKBgQCr\nhMZ9J5t3fS0Ys0F88k4HJRG9r6U3IfZCQme7qqTxc28SGoBQ0ITUjqLt248ghwri\nTwlQaQ0x0j6dJ7z8rnTeKo1O/7zKC3iMwnWJFGRqHus4jjY+u3tKn6n6qIhqlXKX\nCDE9PlQ9NCMiBA6V8WfD9UkJVX3AjlxyKmS+KrFCQQKBgQDEiSW0pdV9ATBRkRuH\n1tsNXmbn+Wn0XRiIsUiDzPwoZdcttb4y83zSf+QLo6I1XmXv7E3OGYX+/NLAa5eZ\nCiLwsiMEClPMngyIzCK4mcxXiDPtGFAIvoCYwYUrCoTp8LdQQZ9FUjI97745rTDO\n7IfdODcmi7F2xFLFxkfJ1TDtNg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "lafiga-drive@lafiga.iam.gserviceaccount.com",
+  "client_id": "112084941814530056815",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lafiga-drive%40lafiga.iam.gserviceaccount.com"
+}

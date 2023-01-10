@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_07_020428) do
+ActiveRecord::Schema.define(version: 2022_10_27_014843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "parent_article_category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_article_category_id"], name: "index_article_categories_on_parent_article_category_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.json "content"
+    t.string "image"
+    t.string "gallery", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "article_category_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -69,16 +87,14 @@ ActiveRecord::Schema.define(version: 2022_10_07_020428) do
 
   create_table "markers", force: :cascade do |t|
     t.bigint "map_id", null: false
-    t.bigint "category_id", null: false
-    t.string "name"
-    t.text "description"
+    t.string "markerable_type", null: false
+    t.bigint "markerable_id", null: false
     t.float "latitude"
     t.float "longitude"
-    t.json "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_markers_on_category_id"
     t.index ["map_id"], name: "index_markers_on_map_id"
+    t.index ["markerable_type", "markerable_id"], name: "index_markers_on_markerable_type_and_markerable_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -114,8 +130,8 @@ ActiveRecord::Schema.define(version: 2022_10_07_020428) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "article_categories", "article_categories", column: "parent_article_category_id"
   add_foreign_key "chars", "teams"
   add_foreign_key "group_players", "groups"
-  add_foreign_key "markers", "categories"
   add_foreign_key "markers", "maps"
 end

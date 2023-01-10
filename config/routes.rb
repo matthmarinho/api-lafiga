@@ -26,6 +26,12 @@ Rails.application.routes.draw do
       resources :teams do
         delete 'remove_in_batches', :on => :collection
       end
+      resources :articles do
+        delete 'remove_in_batches', :on => :collection
+      end
+      resources :article_categories do
+        delete 'remove_in_batches', :on => :collection
+      end
     end
   end
 
