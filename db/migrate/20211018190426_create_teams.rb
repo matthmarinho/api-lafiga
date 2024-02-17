@@ -4,6 +4,8 @@ class CreateTeams < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :season
       t.integer :day
+      t.text :description
+      t.json :color
 
       t.timestamps
     end

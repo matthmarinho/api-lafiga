@@ -1,3 +1,3 @@
 class CategoriesSerializer < ApplicationSerializer
-    attributes :id, :name
+    attributes :id, :name, :class_name
 end

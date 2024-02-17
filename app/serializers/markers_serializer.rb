@@ -1,7 +1,5 @@
 class MarkersSerializer < ApplicationSerializer
-    attributes :id, :map_id, :category_id, :category_name, :name, :description, :latitude, :longitude, :color
+    attributes :id, :map_id, :latitude, :longitude, :markerable_type, :markerable_id
 
-    def category_name
-        object.category.name
-    end
+    has_one :markerable, except: [:created_at, :updated_at]
 end

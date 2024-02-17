@@ -9,3 +9,5 @@
 Role.find_or_create_by(name: 'admin')
 Role.find_or_create_by(name: 'master')
 Role.find_or_create_by(name: 'player')
+
+Category.find_or_create_by(name: 'Equipe', class_name: 'Team')

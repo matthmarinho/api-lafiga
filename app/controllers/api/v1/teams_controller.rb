@@ -3,8 +3,7 @@ class Api::V1::TeamsController < ApplicationController
 
   def index
     @teams = Team.all
-
-    render json: @teams
+    render json: @teams, status: :ok, each_serializer: TeamAdminSerializer
   end
 
   def show
@@ -22,24 +21,32 @@ class Api::V1::TeamsController < ApplicationController
     @team.chars = chars
     
     if @team.save
-      render json: @team, status: :created, location: @team
+      render json: @team, status: :created
     else
       render json: @team.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    chars = []
-    char_params['chars'].each do |char|
-      chars << Char.find_by_id(char['id'])
+    if char_params['chars']
+      chars = []
+      char_params['chars'].each do |char|
+        chars << Char.find_by_id(char['id'])
+      end
+      @team.chars = chars
     end
-
-    @team.chars = chars
-
+    
     if @team.update(team_params)
       render json: @team
     else
       render json: @team.errors, status: :unprocessable_entity
+    end
+  end
+
+  def remove_in_batches
+    @teams = JSON.parse(team_destroy_params[:data])
+    @teams.each do |team|
+      Team.find_by_id(team['id']).destroy
     end
   end
 
@@ -53,10 +60,14 @@ class Api::V1::TeamsController < ApplicationController
     end
 
     def team_params
-      params.permit(:id, :name, :season, :day)
+      params.permit(:id, :name, :season, :day, :description, :color)
     end
 
     def char_params
       params.permit(chars: [:id, :name, :race, :sub_race, :klass, :sub_class, :level])
+    end
+
+    def team_destroy_params
+      params.permit(:data).to_h
     end
 end

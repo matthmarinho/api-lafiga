@@ -1,0 +1,3 @@
+class MarkerableSerializer < ApplicationSerializer
+    
+end
